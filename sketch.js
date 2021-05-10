@@ -18,6 +18,7 @@ var box4;
 var box5;
 var box6;
 var box7;
+var colorone="black";
 var box8;
 var box9;
 var box10;
@@ -104,7 +105,7 @@ function setup() {
 }
 
 function draw() {
-  background(0);  
+  background("black");  
   Engine.update(engine);
   rectMode(CENTER);
   rect(ground1.position.x,ground1.position.y,300,20);
@@ -177,7 +178,8 @@ function draw() {
   box30.score();
   box31.score();
   slingshot.display();
-  text("Score: "+score,200,50)
+  text("Score: "+score,200,50);
+  getbacktime();
 }
  
 
@@ -186,7 +188,13 @@ function mouseDragged(){
       Matter.Body.setPosition(ball.body, {x: mouseX , y: mouseY});
   }
 }
-
+async function getbacktime(){
+  var response = await fetch("http://worldtimeapi.org/api/timezone/Asia/Kolkata");
+  var responceone= await response.json();
+  var timeone = responceone.timeone;
+  var hour = timeone.slice(1,3); 
+  console.log(hour);
+}
 
 function mouseReleased(){
   slingshot.fly();
