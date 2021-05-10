@@ -191,8 +191,8 @@ function mouseDragged(){
 async function getbacktime(){
   var response = await fetch("http://worldtimeapi.org/api/timezone/Asia/Kolkata");
   var responceone= await response.json();
-  var timeone = responceone.timeone;
-  var hour = timeone.slice(1,3); 
+  var Datetime = responceone.Datetime;
+  var hour = Datetime.slice(1,3); 
   console.log(hour);
 }
 
